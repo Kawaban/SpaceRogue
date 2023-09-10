@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 520068503}
   - component: {fileID: 520068502}
   - component: {fileID: 520068505}
+  - component: {fileID: 520068506}
   m_Layer: 0
   m_Name: Spaceship_tut (1)
   m_TagString: Untagged
@@ -427,7 +428,8 @@ Transform:
   m_LocalPosition: {x: 4.118951, y: 5.5346527, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1145179603}
   m_Father: {fileID: 2058282098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &520068505
@@ -456,7 +458,57 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &520068506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520068501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f50bd4ee583e2049b4eba81e33687b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.08
+  rotationSpeed: 70
+  hero: {fileID: 1567532472}
+  attackCooldown: 3
+  BulletPrefab: {fileID: 3854687106333909037, guid: 6bcdb5a1592fecb4888f1f5eaf852067, type: 3}
+  FirePoint: {fileID: 1145179603}
+  bulletForce: 20
+--- !u!1 &1145179602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145179603}
+  m_Layer: 0
+  m_Name: FirePointEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1145179603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145179602}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.03, y: 1.15, z: 0.023511302}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 520068504}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205733204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: -300979596, guid: cfefe80a5aee6894d963ed5875be06e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
