@@ -42,5 +42,6 @@ public class WeaponControll : MonoBehaviour
         Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
         bulletRB.AddForce(bulletForce*FirePoint.up,ForceMode2D.Impulse);
         bullet.transform.Rotate(0f, 0f, 90f);
+        Destroy(bullet, 10f);
     }
 }

@@ -11,13 +11,16 @@ public class ShipMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed=70f;
     [SerializeField] private float trustAcceleration = 10f;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private Camera cam;
     private float trust=0;
     private float angle = 0;
     private Rigidbody2D rb;
     Vector2 mousePos;
+    private Rigidbody2D rbcam;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rbcam = cam.GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
     {
@@ -27,6 +30,8 @@ public class ShipMovement : MonoBehaviour
         transform.Translate(movement);
         text.text = "debug" ;
         rb.rotation = angle; 
+        rbcam.rotation = 0f;
+       
         
     }
 
