@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b24af985f533c648ac28780b9f8722a, type: 3}
+  m_Name: EnemyInterceptorWeapon
+  m_EditorClassIdentifier: 
+  damage: 20
+  attackCooldown: 2.5
+  canTurn: 0
+  series: 1
+  fireDelay: 0.1
+  bulletForce: 30
+  bulletImage: {fileID: 21300000, guid: 426ad1233b62daa4aa2b662a2eb146e7, type: 3}
+  shotSound:
+    audio: {fileID: 8300000, guid: e3f3a25f85767a241ac8a0eecac9be04, type: 3}
+    volume: 0.134
+    pitch: 0.99
+    name: EnemyInterceptorShot
+    loop: 0

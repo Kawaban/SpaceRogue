@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e8f3b008c70ae49825ed4420c6b26d, type: 3}
+  m_Name: HeroSniperMovement
+  m_EditorClassIdentifier: 
+  maxSpeed: 0.18
+  rotationSpeed: 70
+  trustAcceleration: 10
+  shield: {fileID: 0}
+  shieldTime: 1
+  scale: 1
+  shieldSound:
+    audio: {fileID: 8300000, guid: 6016baed4559e4240af89a44226dbfe7, type: 3}
+    volume: 1
+    pitch: 3
+    name: Shield
+    loop: 0
+  explosionSound:
+    audio: {fileID: 0}
+    volume: 0
+    pitch: 0
+    name: gg
+    loop: 0
+  shipSprite: {fileID: 21300000, guid: b45989b6188f46c4e8c45bdbe7e484ee, type: 3}
