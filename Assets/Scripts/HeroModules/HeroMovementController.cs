@@ -10,7 +10,8 @@ public class HeroMovementController : MovementController
     
     [SerializeField] private Camera cam;
     [SerializeField] private BackGroundHelper backGroundHelper;
-    
+    [SerializeField] private GameObject explosion;
+
     private Rigidbody2D rbcam;
 
    
@@ -41,6 +42,11 @@ public class HeroMovementController : MovementController
 
     public override void Death()
     {
+        Debug.Log("GG");
         AudioController.Instance.Play(base.MovementData.ExplosionSound);
+        GameObject explosionObj = Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+        explosionObj.transform.parent = gameObject.transform;
+        explosionObj.transform.localScale = new Vector3(base.MovementData.ExplosionScale, base.MovementData.ExplosionScale, 1f);
+        Destroy(explosionObj, 1f);
     }
 }

@@ -30,4 +30,5 @@ MonoBehaviour:
     pitch: 1
     name: EFexplosion
     loop: 0
+  explosionScale: 3
   shipSprite: {fileID: 21300000, guid: c5ab5220a44673a418a94f11f0a678a9, type: 3}

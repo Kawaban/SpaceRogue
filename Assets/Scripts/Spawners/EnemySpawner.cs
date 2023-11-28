@@ -71,7 +71,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void GenerateEnemy()
     {
-        int[] listOfEnemies = listOfAllGeneratedEnemies[level][UnityEngine.Random.Range(0, listOfAllGeneratedEnemies[level].Length)];
+        int[] listOfEnemies = listOfAllGeneratedEnemies[Math.Min(level, listOfAllGeneratedEnemies.Length-1)][UnityEngine.Random.Range(0, listOfAllGeneratedEnemies[level].Length)];
         for(int i = 0; i < listOfEnemies.Length; i++)
         {
             Vector3 point = CalculatePoint();

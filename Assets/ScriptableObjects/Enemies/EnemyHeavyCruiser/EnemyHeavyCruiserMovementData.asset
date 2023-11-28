@@ -30,4 +30,5 @@ MonoBehaviour:
     pitch: 1
     name: HCexplosion
     loop: 0
+  explosionScale: 5
   shipSprite: {fileID: 21300000, guid: ff35788e2b7c37b49b1926680e11fcab, type: 3}

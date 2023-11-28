@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class HeroEntity : Entity
 {
     [SerializeField] private UIScriptableObject UIObject;
-    
+    private Boolean isAlreadyDead = false;
 
     void OnEnable()
     {
@@ -39,7 +40,13 @@ public class HeroEntity : Entity
 
     public override void Death()
     {
-        UIObject.DeathEvent(0);
+        if(!isAlreadyDead) 
+        {
+            isAlreadyDead = true;
+            UIObject.DeathEvent(0);
+            base.MovementController.Death();
+        }
+        
     }
 
     public void IncreaseScore(int score)

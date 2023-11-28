@@ -10,6 +10,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Slider shieldBar;
+    [SerializeField] private GameObject shieldBarColorObj;
+    [SerializeField] private GameObject healthBarColorObj;
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider ReloadBar;
     [SerializeField] private GameObject backgroundReload;
@@ -18,9 +20,21 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Animator animatorUp;
     [SerializeField] private Animator animatorDown;
 
+    private Color shieldColor;
+    private Image shieldBarColor;
+    private Color healthColor;
+    private Image healthBarColor;
 
     void OnEnable()
     {
+
+        shieldBarColor = shieldBarColorObj.GetComponent<Image>();
+        healthBarColor = healthBarColorObj.GetComponent<Image>();
+
+        shieldColor = shieldBarColor.color;
+        healthColor = healthBarColor.color;
+
+        UIObject.Refresh();
         UIObject.healthEventChange.AddListener(ChangeHealth);
         UIObject.shieldEventChange.AddListener(ChangeShield);
         UIObject.reloadEventChange.AddListener(ChangeReload);
@@ -36,10 +50,20 @@ public class UIManager : MonoBehaviour
 
     public void ChangeHealth(float value)
     {
+        if(value < 0.05f)
+            healthBarColor.color = new Color(0f,0f,0f,0f);
+        else if(healthBarColor.color != healthColor)
+            healthBarColor.color = healthColor;
+
         healthBar.value = value;
     }
     public void ChangeShield(float value)
     {
+        if (value < 0.05f)
+            shieldBarColor.color = new Color(0f, 0f, 0f, 0f);
+        else if (shieldBarColor.color != shieldColor)
+            shieldBarColor.color = shieldColor;
+
         shieldBar.value = value;
     }
 
@@ -52,7 +76,6 @@ public class UIManager : MonoBehaviour
         }
         else if (ReloadBar.value != 1f)
         {
-
             ReloadBar.value =value.second;
         }
         else

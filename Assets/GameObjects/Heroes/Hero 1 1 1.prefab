@@ -415,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 830964710667932571}
   backGroundHelper: {fileID: 11400000, guid: 9d7ccf929fb001142a94f1f8638582e6, type: 2}
+  explosion: {fileID: 4567491461750955893, guid: f227b608ed2462d4c97145b996ba506d, type: 3}
 --- !u!1 &7707798575233883781
 GameObject:
   m_ObjectHideFlags: 0

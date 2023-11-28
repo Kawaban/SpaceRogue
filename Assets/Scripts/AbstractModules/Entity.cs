@@ -17,6 +17,8 @@ public abstract class Entity : MonoBehaviour
 
     private float currentHealth;
     private float currentShield;
+
+    
     public virtual void calculateDamage(float damage)
     {
         if(currentShield > 0)
@@ -60,7 +62,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Death()
     {
-        
+       
     }
 
     public void Build(Build build)

@@ -104,6 +104,7 @@ public class EnemyShipController : MovementController
        
         GameObject explosionObj = Instantiate(explosion, gameObject.transform.position,Quaternion.identity);
         AudioController.Instance.Play(base.MovementData.ExplosionSound);
+        explosionObj.transform.localScale = new Vector3(base.MovementData.ExplosionScale, base.MovementData.ExplosionScale, 1f);
         Destroy(explosionObj, explosionTime);
     }
   

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b24af985f533c648ac28780b9f8722a, type: 3}
   m_Name: InterceptorWeapon
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 40
   attackCooldown: 2
   canTurn: 1
   series: 4

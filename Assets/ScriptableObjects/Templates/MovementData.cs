@@ -14,6 +14,7 @@ public class MovementData : ScriptableObject
     [SerializeField] private float scale;
     [SerializeField] private Sound shieldSound;
     [SerializeField] private Sound explosionSound;
+    [SerializeField] private float explosionScale;
     [SerializeField] private Sprite shipSprite;
 
     public float MaxSpeed { get => maxSpeed;  }
@@ -25,4 +26,5 @@ public class MovementData : ScriptableObject
     public Sound ExplosionSound { get => explosionSound;}
     public Sound ShieldSound { get => shieldSound; }
     public Sprite ShipSprite { get => shipSprite; }
+    public float ExplosionScale { get => explosionScale;  }
 }

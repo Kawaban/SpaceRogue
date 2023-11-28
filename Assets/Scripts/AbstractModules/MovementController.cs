@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public abstract class MovementController : MonoBehaviour
     public GameObject Shield { get => shield; set => shield = value; }
     public MovementData MovementData { get => movementData; set => movementData = value; }
     public float Trust { get => trust; }
+
+    private Boolean shiledIsCurrentrlyAcctive = false;
 
     public void FixedUpdateChange()
     {
@@ -42,13 +45,13 @@ public abstract class MovementController : MonoBehaviour
     
     public virtual void Death()
     {
-
+        
     }
 
     public void shieldEngage()
     {
-       
-        StartCoroutine(ShiledEffectCooldown());
+       if(!shiledIsCurrentrlyAcctive)
+         StartCoroutine(ShiledEffectCooldown());
     }
 
     public IEnumerator ShiledEffectCooldown()
@@ -56,9 +59,11 @@ public abstract class MovementController : MonoBehaviour
         if(MovementData.ShieldSound != null)
             AudioController.Instance.Play(MovementData.ShieldSound);
         shield.transform.Translate(new Vector3(0f, 0f, -1000f));
+        shiledIsCurrentrlyAcctive = true;
         yield return new WaitForSeconds(movementData.ShieldTime);
         shield.transform.Translate(new Vector3(0f, 0f, 1000f));
-        
+        shiledIsCurrentrlyAcctive = false;
+
     }
 
     public void ApplyShipSprite()

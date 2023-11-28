@@ -30,4 +30,5 @@ MonoBehaviour:
     pitch: 1
     name: HeroExlposion
     loop: 0
+  explosionScale: 4
   shipSprite: {fileID: 21300000, guid: b45989b6188f46c4e8c45bdbe7e484ee, type: 3}

@@ -37,6 +37,11 @@ public class UIScriptableObject : ScriptableObject
             deathEvent = new UnityEvent<int>();
     }
 
+    public void Refresh()
+    {
+        OnEnable();
+    }
+
     public void Init(float maxShield, float maxHealth)
     {
         this.maxShield = maxShield;
