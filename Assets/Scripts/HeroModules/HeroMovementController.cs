@@ -38,4 +38,9 @@ public class HeroMovementController : MovementController
         base.UpdateChange(modAngle, modTrust);
 
     }
+
+    public override void Death()
+    {
+        AudioController.Instance.Play(base.MovementData.ExplosionSound);
+    }
 }

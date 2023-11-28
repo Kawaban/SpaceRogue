@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10e8f3b008c70ae49825ed4420c6b26d, type: 3}
-  m_Name: HeroFighterMovement
+  m_Name: EnemyHeavyCruiserMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 0.15
-  rotationSpeed: 70
-  trustAcceleration: 10
+  maxSpeed: 0.08
+  rotationSpeed: 40
+  trustAcceleration: 30
   shield: {fileID: 0}
   shieldTime: 1
-  scale: 1
+  scale: 4
   shieldSound:
     audio: {fileID: 8300000, guid: 6016baed4559e4240af89a44226dbfe7, type: 3}
     volume: 1
     pitch: 1
-    name: ShieldSound
+    name: HCShield
     loop: 0
   explosionSound:
-    audio: {fileID: 0}
-    volume: 0
-    pitch: 0
-    name: 
+    audio: {fileID: 8300000, guid: 45759d23228074347a43696a1be4e2c3, type: 3}
+    volume: 1
+    pitch: 1
+    name: HCexplosion
     loop: 0
-  shipSprite: {fileID: 21300000, guid: b45989b6188f46c4e8c45bdbe7e484ee, type: 3}
+  shipSprite: {fileID: 21300000, guid: ff35788e2b7c37b49b1926680e11fcab, type: 3}

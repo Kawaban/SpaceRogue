@@ -39,7 +39,6 @@ public class HeroEntity : Entity
 
     public override void Death()
     {
-        /*gameObject.transform.GetChild(1).gameObject.GetComponent<Camera>().transform.Translate(new Vector3(0f, 0f, 2000f));*/
         UIObject.DeathEvent(0);
     }
 

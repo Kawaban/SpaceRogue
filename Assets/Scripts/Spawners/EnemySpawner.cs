@@ -1,26 +1,65 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject enemyObject;
-    [SerializeField] private Build enemyBuild;
+    [SerializeField] private Build enemyInterceptorBuild;
+    [SerializeField] private Build enemyFighterBuild;
+    [SerializeField] private Build enemyHeavyCruiserBuild;
     private Camera cam;
     [SerializeField] private float secToGenerate;
-    [SerializeField] private int numberOfGenerated;
     [SerializeField] private float delta;
     private GameObject hero;
     private Boolean generateCooldown = true;
-
+    private int iterationOnLevel = 0;
+    private int level = 0;
+    [SerializeField] private TextAsset listOfEnemiesJSON;
+    [SerializeField] private int iterationOnLevelMax;
+    private int[][][] listOfAllGeneratedEnemies;
     public Camera Cam { get => cam; set => cam = value; }
     public GameObject Hero { get => hero; set => hero = value; }
 
+
+    private class ListOfEnemiesData
+    {
+        public int[][][] array;
+        
+    }
+
+    
+
+     void Start()
+    {
+        ListOfEnemiesData listOf;
+        try
+        {
+            Debug.Log(listOfEnemiesJSON.text);
+            listOf = JsonConvert.DeserializeObject<ListOfEnemiesData>(listOfEnemiesJSON.text);
+            if(listOf.array[0]==null)
+            {
+               /* Debug.Log("oH NO");*/
+            }
+     
+            listOfAllGeneratedEnemies = listOf.array;
+        }
+        catch
+        {
+            Debug.LogError("File cannot be read");
+            listOfAllGeneratedEnemies = new int[1][][];
+            listOfAllGeneratedEnemies[0] = new int[1][];
+            listOfAllGeneratedEnemies[0][0] = new int[1];
+            listOfAllGeneratedEnemies[0][0][0] = 1;
+        }
+    }
     void FixedUpdate()
     {
-        if (CheckToGenerate() || generateCooldown)
+        if (generateCooldown)
             GenerateEnemy();
     }
 
@@ -32,16 +71,22 @@ public class EnemySpawner : MonoBehaviour
 
     private void GenerateEnemy()
     {
-        for(int i = 0; i < numberOfGenerated; i++)
+        int[] listOfEnemies = listOfAllGeneratedEnemies[level][UnityEngine.Random.Range(0, listOfAllGeneratedEnemies[level].Length)];
+        for(int i = 0; i < listOfEnemies.Length; i++)
         {
             Vector3 point = CalculatePoint();
             GameObject enemy = Instantiate(enemyObject, point, gameObject.transform.rotation);
-            enemy.GetComponent<EnemyEntity>().Build(enemyBuild);
+            enemy.GetComponent<EnemyEntity>().Build(GetBuild(listOfEnemies[i]));
             enemy.transform.parent = gameObject.transform;
             EnemyShipController ehc = enemy.GetComponent<EnemyShipController>();
             ehc.Hero = hero;
         }
-        if (generateCooldown)
+        iterationOnLevel++;
+        if(iterationOnLevel >= iterationOnLevelMax)
+        {
+            iterationOnLevel = 0;
+            level++;
+        }
             StartCoroutine(GenerationCooldown());
     }
 
@@ -70,5 +115,16 @@ public class EnemySpawner : MonoBehaviour
         generateCooldown = false;
         yield return new WaitForSeconds(secToGenerate);
         generateCooldown = true;
+    }
+
+    private Build GetBuild(int param)
+    {
+        switch(param) 
+        {
+            case 0: return enemyInterceptorBuild;
+            case 1: return enemyFighterBuild;
+            case 2: return enemyHeavyCruiserBuild;
+            default: return enemyInterceptorBuild;
+        }
     }
 }

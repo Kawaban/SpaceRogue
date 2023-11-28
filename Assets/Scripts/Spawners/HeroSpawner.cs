@@ -44,7 +44,6 @@ public class HeroSpawner : MonoBehaviour
                 choosenBuild = heroBuildFighter;
                 break;
         }
-        /*canvasUI.worldCamera = hero.transform.GetChild(1).gameObject.GetComponent<Camera>();*/
         backgroundCanvas.worldCamera = hero.transform.GetChild(1).gameObject.GetComponent<Camera>();
         enemySpawner.Cam = hero.transform.GetChild(1).gameObject.GetComponent<Camera>();
         enemySpawner.Hero = hero;
