@@ -26,4 +26,10 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Settings()
+    {
+        AudioController.Instance.Play("ButtonClick");
+        SceneManager.LoadScene("Settings");
+    }
 }

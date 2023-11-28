@@ -10,6 +10,8 @@ public class AudioController : MonoBehaviour
     public static AudioController Instance { get; private set; }
 
     [SerializeField] private  AudioCollection audioCollection;
+    [SerializeField] private AudioMixer audioMixer;
+
     private static Dictionary<string, Sound> soundsDictionary = new Dictionary<string, Sound>(); 
 
     void Awake()
@@ -25,6 +27,8 @@ public class AudioController : MonoBehaviour
             foreach (Sound sound in audioCollection.sounds)
             {
                 sound.AudioSource = gameObject.AddComponent<AudioSource>();
+                Debug.Log(audioMixer.FindMatchingGroups("")[0]);
+                sound.AudioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("")[0];
                 sound.AudioSource.clip = sound.audio;
                 sound.AudioSource.pitch = sound.pitch;
                 sound.AudioSource.volume = sound.volume;
@@ -55,6 +59,7 @@ public class AudioController : MonoBehaviour
         else
         {
             sound.AudioSource = gameObject.AddComponent<AudioSource>();
+            sound.AudioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("")[0];
             sound.AudioSource.clip = sound.audio;
             sound.AudioSource.pitch = sound.pitch;
             sound.AudioSource.volume = sound.volume;
